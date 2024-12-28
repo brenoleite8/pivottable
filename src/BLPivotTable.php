@@ -1,5 +1,5 @@
 <?php
-namespace BrenoLeite8\PivotTable;
+namespace BrenoLeite8\pivottable;
 
 //use Adianti\Widget\Base\TElement;
 //use Adianti\Widget\Base\TScript;
