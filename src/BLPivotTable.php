@@ -74,9 +74,12 @@ class BLPivotTable extends TElement
     private function create()
     {
         if(!empty($this->fieldNames)) {
-            $this->objects = $this->formatDataAndColumns($this->objects, $this->fieldNames);
-            $this->rows    = $this->formatColumnNames($this->rows, $this->fieldNames);
-            $this->columns = $this->formatColumnNames($this->columns, $this->fieldNames);
+            if(!empty($this->objects))
+                $this->objects = $this->formatDataAndColumns($this->objects, $this->fieldNames);
+            if(!empty($this->rows))
+                $this->rows    = $this->formatColumnNames($this->rows, $this->fieldNames);
+            if(!empty($this->columns))
+                $this->columns = $this->formatColumnNames($this->columns, $this->fieldNames);
         }
         $jsonData    = json_encode($this->objects);
         $jsonRows    = json_encode($this->rows);
