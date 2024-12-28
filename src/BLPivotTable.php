@@ -24,8 +24,8 @@ class BLPivotTable extends TElement
         parent::__construct('div');
        
         // JS Libraries
-        TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.min.js');
-        TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js');
+        //TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.min.js');
+        //TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js');
         // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.js');
         // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.pt.min.js');
         // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/tips_data.min.js');
@@ -72,7 +72,7 @@ class BLPivotTable extends TElement
                                     cols: ['shape']
                                 }
                             );
-                        });
+                        }. false, 'pt');
                         ");
     }
 
@@ -81,7 +81,9 @@ class BLPivotTable extends TElement
     {
         $style = new TElement('style');
         $style->add('#'.$this->id.'{ height:'.$this->height.';  width: '.$this->width.'; }');
-        
+
+        TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.min.js');
+        TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js');
         $this->create();
 
         $content = new TElement('div');
