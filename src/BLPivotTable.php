@@ -1,8 +1,8 @@
 <?php
 namespace BrenoLeite8\pivottable;
 
-//use Adianti\Widget\Base\TElement;
-//use Adianti\Widget\Base\TScript;
+use Adianti\Widget\Base\TElement;
+use Adianti\Widget\Base\TScript;
 use Adianti\Control\TPage;
 use Adianti\Database\TRecord;
 use Adianti\Database\TRepository;
