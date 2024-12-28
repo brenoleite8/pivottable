@@ -46,15 +46,15 @@ class BLPivotTable extends TElement
 
     private function create()
     {
+        $jsonData    = json_encode($this->objects);
+        $jsonRows    = json_encode($this->rows);
+        $jsonColumns = json_encode($this->columns);
         TScript::create("$(function(){
                             $('#".$this->id."').pivotUI(
-                                [
-                                    {color: 'blue', shape: 'circle'},
-                                    {color: 'red', shape: 'triangle'}
-                                ],
+                                [".$jsonData."],
                                 {
-                                    rows: ['color'],
-                                    cols: ['shape']
+                                    rows: ".$jsonRows.",
+                                    cols: ".$jsonColumns."
                                 }
                             , false, \"pt\");
                         });
