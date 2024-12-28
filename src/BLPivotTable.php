@@ -52,10 +52,10 @@ class BLPivotTable extends TElement
         $jsonColumns = json_encode($this->columns);
         TScript::create("$(function(){
                             $('#".$this->id."').pivotUI(
-                                [".$jsonData."],
+                                ".$jsonData.",
                                 {
-                                    rows: [".$jsonRows."],
-                                    cols: [".$jsonColumns."]
+                                    rows: ".$jsonRows.",
+                                    cols: ".$jsonColumns."
                                 }
                             , false, \"pt\");
                         });
