@@ -3,6 +3,7 @@ namespace BrenoLeite8\pivottable;
 
 use Adianti\Widget\Base\TElement;
 use Adianti\Widget\Base\TScript;
+use Adianti\Widget\Base\TStyle;
 use Adianti\Control\TPage;
 use Adianti\Database\TRecord;
 use Adianti\Database\TRepository;
@@ -23,8 +24,10 @@ class BLPivotTable extends TElement
         parent::__construct('div');
        
         // JS Libraries
-        TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.js');
-        TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.pt.min.js');
+        TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.min.js');
+        TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js');
+        // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.js');
+        // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.pt.min.js');
         // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/tips_data.min.js');
         // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/plotly_renderers.min.js');
         // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot_spec.min.js');
@@ -34,7 +37,8 @@ class BLPivotTable extends TElement
         // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/c3_renderers.min.js');
         
         // CSS Libraries
-        TPage::include_css('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.css');
+        TStyle::importFromFile('vendor/brenoleite8/pivottable/src/css/pivot.min.css');
+        // TPage::include_css('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.css');
         
         $this->id = 'bl_pivot_table_' . uniqid();
       
