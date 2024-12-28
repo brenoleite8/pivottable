@@ -79,9 +79,6 @@ class BLPivotTable extends TElement
 
     public function show()
     {
-        $style = new TElement('style');
-        $style->add('#'.$this->id.'{ height:'.$this->height.';  width: '.$this->width.'; }');
-        
         $this->create();
 
         $script1 = new TElement('script');
@@ -98,7 +95,7 @@ class BLPivotTable extends TElement
         $content = new TElement('div');
         $content->id = $this->id;
                 
-        return  $style.$script1.$script2.$content;
+        return  $script1.$script2.$content;
     }
 
 }
