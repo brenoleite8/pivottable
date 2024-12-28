@@ -11,11 +11,9 @@ class BLPivotTable extends TElement
 {
     protected $id;
     
-    private $objects;
+    private $objects = array();
     private $rows    = ''; 
     private $columns = '';
-    private $height = '500px'; 
-    private $width = '500px';
     private $return;
 
     public function __construct()
@@ -29,9 +27,12 @@ class BLPivotTable extends TElement
       
     }
 
-    public function setObjects(TRecord $objects) 
-    {       
-        $this->objects = $objects->toArray();
+    public function setObjects(array $objects) 
+    {
+        foreach($objects as $key => $object)  
+        {
+            $this->objects[$key] = $objects->toArray();
+        }
     }
 
     public function setRows(array $rows) 
