@@ -27,9 +27,9 @@ class BLPivotTable extends TElement
       
     }
 
-    public function setObjects(array $objects) 
+    public function setObjects(array $repository) 
     {
-        foreach($objects as $key => $object)  
+        foreach($repository as $key => $object)  
         {
             $this->objects[$key] = $object->toArray();
         }
