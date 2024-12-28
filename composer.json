@@ -7,7 +7,7 @@
     },
     "autoload": {
         "psr-4": {
-        "Brenoleite8\\Pivottable\\": "src/"
+        "Brenoleite8\\PivotTable\\": "src/"
         }
     },
     "authors": [
