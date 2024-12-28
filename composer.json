@@ -1,5 +1,5 @@
 {
-    "name": "brenoleite8/PivotTable",
+    "name": "brenoleite8/pivottable",
     "description": "A PivotTable for use with Mad Builder or Adianti Framework.",
     "type": "library",
     "require": {
@@ -7,7 +7,7 @@
     },
     "autoload": {
         "psr-4": {
-        "Brenoleite8\\PivotTable\\": "src/"
+        "Brenoleite8\\pivottable\\": "src/"
         }
     },
     "authors": [
