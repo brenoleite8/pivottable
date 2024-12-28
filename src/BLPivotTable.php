@@ -4,7 +4,6 @@ namespace BrenoLeite8\pivottable;
 use Adianti\Widget\Base\TElement;
 use Adianti\Widget\Base\TScript;
 use Adianti\Widget\Base\TStyle;
-use Adianti\Control\TPage;
 use Adianti\Database\TRecord;
 use Adianti\Database\TRepository;
 
@@ -22,23 +21,9 @@ class BLPivotTable extends TElement
     public function __construct()
     {
         parent::__construct('div');
-       
-        // JS Libraries
-        //TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.min.js');
-        //TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js');
-        //TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.js');
-        //TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.pt.min.js');
-        // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/tips_data.min.js');
-        // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/plotly_renderers.min.js');
-        // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot_spec.min.js');
-        // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/gchart_renderers.min.js');
-        // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/export_renderers.min.js');
-        // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/d3_renderers.min.js);
-        // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/c3_renderers.min.js');
         
         // CSS Libraries
         TStyle::importFromFile('vendor/brenoleite8/pivottable/src/css/pivot.min.css');
-        //TPage::include_css('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.css');
         
         $this->id = 'bl_pivot_table_' . uniqid();
       
@@ -81,21 +66,42 @@ class BLPivotTable extends TElement
     {
         $this->create();
 
-        $script1 = new TElement('script');
-        $script1->type = 'text/javascript';
-        $script1->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.min.js';
+        $script = new TElement('script');
+        $script->type = 'text/javascript';
+        $script->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.min.js';
 
-        $script2 = new TElement('script');
-        $script2->type = 'text/javascript';
-        $script2->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js';
+        $script_pt = new TElement('script');
+        $script_pt->type = 'text/javascript';
+        $script_pt->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js';
+
+        $script_plotly = new TElement('script');
+        $script_plotly->type = 'text/javascript';
+        $script_plotly->src  = 'vendor/brenoleite8/pivottable/src/js/plotly_renderers.min.js';
+
+        $script_spec = new TElement('script');
+        $script_spec->type = 'text/javascript';
+        $script_spec->src  = 'vendor/brenoleite8/pivottable/src/js/pivot_spec.min.js';
         
-        //TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.min.js');
-        //TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js');
-        
+        $script_gchart = new TElement('script');
+        $script_gchart->type = 'text/javascript';
+        $script_gchart->src  = 'vendor/brenoleite8/pivottable/src/js/gchart_renderers.min.js';
+
+        $script_export = new TElement('script');
+        $script_export->type = 'text/javascript';
+        $script_export->src  = 'vendor/brenoleite8/pivottable/src/js/export_renderers.min.js';
+
+        $script_d3 = new TElement('script');
+        $script_d3->type = 'text/javascript';
+        $script_d3->src  = 'vendor/brenoleite8/pivottable/src/js/d3_renderers.min.js';
+
+        $script_c3 = new TElement('script');
+        $script_c3->type = 'text/javascript';
+        $script_c3->src  = 'vendor/brenoleite8/pivottable/src/js/c3_renderers.min.js';
+       
         $content = new TElement('div');
         $content->id = $this->id;
                 
-        return  $script1.$script2.$content;
+        return  $script1.$script_pt.$script_plotly.$script_spec.$script_gchart.$script_export.$script_d3.$script_c3.$content;
     }
 
 }
