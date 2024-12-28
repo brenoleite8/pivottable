@@ -101,7 +101,7 @@ class BLPivotTable extends TElement
         $content = new TElement('div');
         $content->id = $this->id;
                 
-        return  $script1.$script_pt.$script_plotly.$script_spec.$script_gchart.$script_export.$script_d3.$script_c3.$content;
+        return  $script.$script_pt.$script_plotly.$script_spec.$script_gchart.$script_export.$script_d3.$script_c3.$content;
     }
 
 }
