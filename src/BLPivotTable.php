@@ -11,9 +11,10 @@ class BLPivotTable extends TElement
 {
     protected $id;
     
-    private $objects = array();
-    private $rows    = ''; 
-    private $columns = '';
+    private $objects    = array();
+    private $fieldNames = array();
+    private $rows       = ''; 
+    private $columns    = '';
     private $return;
 
     public function __construct()
@@ -45,8 +46,38 @@ class BLPivotTable extends TElement
         $this->columns = $columns;
     }
 
+    public function setFieldNames( array $names)
+    {
+        $this->fieldNames = $names;
+    }
+
+    private function formatDataAndColumns(array $data, array $mapping)
+    {
+        // Atualizar os dados mapeando as chaves
+        return array_map(function ($row) use ($mapping) {
+            $formattedRow = [];
+            foreach ($row as $key => $value) {
+                $newKey = $mapping[$key] ?? $key; // Mantém a chave original se não houver mapeamento
+                $formattedRow[$newKey] = $value;
+            }
+            return $formattedRow;
+        }, $data);
+    }
+
+    private function formatColumnNames(array $columns, array $mapping)
+    {
+        return array_map(function ($col) use ($mapping) {
+            return $mapping[$col] ?? $col;
+        }, $columns);
+    }
+
     private function create()
     {
+        if(!empty($this->fieldNames)) {
+            $this->objects = $this->formatDataAndColumns($this->objects, $this->fieldNames);
+            $this->rows    = $this->formatColumnNames($this->rows, $this->fieldNames);
+            $this->columns = $this->formatColumnNames($this->columns, $this->fieldNames);
+        }
         $jsonData    = json_encode($this->objects);
         $jsonRows    = json_encode($this->rows);
         $jsonColumns = json_encode($this->columns);
