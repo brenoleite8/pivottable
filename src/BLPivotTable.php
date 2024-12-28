@@ -31,7 +31,7 @@ class BLPivotTable extends TElement
     {
         foreach($objects as $key => $object)  
         {
-            $this->objects[$key] = $objects->toArray();
+            $this->objects[$key] = $object->toArray();
         }
     }
 
