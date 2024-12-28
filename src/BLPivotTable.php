@@ -81,11 +81,12 @@ class BLPivotTable extends TElement
     {
         $style = new TElement('style');
         $style->add('#'.$this->id.'{ height:'.$this->height.';  width: '.$this->width.'; }');
+        
+        $this->create();
 
         TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.min.js');
         TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js');
-        $this->create();
-
+        
         $content = new TElement('div');
         $content->id = $this->id;
                 
