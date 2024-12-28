@@ -72,7 +72,7 @@ class BLPivotTable extends TElement
                                     cols: ['shape']
                                 }
                             );
-                        }. false, 'pt');
+                        }, false, 'pt');
                         ");
     }
 
