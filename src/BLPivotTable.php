@@ -84,13 +84,21 @@ class BLPivotTable extends TElement
         
         $this->create();
 
-        TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.min.js');
-        TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js');
+        $script1 = new TElement('script');
+        $script1->type = 'text/javascript';
+        $script1->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.min.js';
+
+        $script2 = new TElement('script');
+        $script2->type = 'text/javascript';
+        $script2->src  = vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js';
+        
+        //TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.min.js');
+        //TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js');
         
         $content = new TElement('div');
         $content->id = $this->id;
                 
-        return  $style.$content;
+        return  $style.$script1.$script2.$content;
     }
 
 }
