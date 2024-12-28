@@ -13,8 +13,8 @@ class BLPivotTable extends TElement
     
     private $objects    = array();
     private $fieldNames = array();
-    private $rows       = ''; 
-    private $columns    = '';
+    private $rows       = array(); 
+    private $columns    = array();
     private $return;
 
     public function __construct()
