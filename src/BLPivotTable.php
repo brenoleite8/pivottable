@@ -54,8 +54,8 @@ class BLPivotTable extends TElement
                             $('#".$this->id."').pivotUI(
                                 [".$jsonData."],
                                 {
-                                    rows: ".$jsonRows.",
-                                    cols: ".$jsonColumns."
+                                    rows: [".$jsonRows."],
+                                    cols: [".$jsonColumns."]
                                 }
                             , false, \"pt\");
                         });
