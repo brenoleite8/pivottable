@@ -26,8 +26,8 @@ class BLPivotTable extends TElement
         // JS Libraries
         //TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.min.js');
         //TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js');
-        // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.js');
-        // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.pt.min.js');
+        TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.js');
+        TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.pt.min.js');
         // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/tips_data.min.js');
         // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/plotly_renderers.min.js');
         // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot_spec.min.js');
@@ -37,8 +37,8 @@ class BLPivotTable extends TElement
         // TPage::include_js('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/c3_renderers.min.js');
         
         // CSS Libraries
-        TStyle::importFromFile('vendor/brenoleite8/pivottable/src/css/pivot.min.css');
-        // TPage::include_css('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.css');
+        // TStyle::importFromFile('vendor/brenoleite8/pivottable/src/css/pivot.min.css');
+        TPage::include_css('https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.css');
         
         $this->id = 'bl_pivot_table_' . uniqid();
       
@@ -84,13 +84,13 @@ class BLPivotTable extends TElement
         
         $this->create();
 
-        $script1 = new TElement('script');
-        $script1->type = 'text/javascript';
-        $script1->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.min.js';
+        //$script1 = new TElement('script');
+        //$script1->type = 'text/javascript';
+        //$script1->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.min.js';
 
-        $script2 = new TElement('script');
-        $script2->type = 'text/javascript';
-        $script2->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js';
+        //$script2 = new TElement('script');
+        //$script2->type = 'text/javascript';
+        //$script2->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js';
         
         //TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.min.js');
         //TScript::importFromFile('vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js');
@@ -98,7 +98,7 @@ class BLPivotTable extends TElement
         $content = new TElement('div');
         $content->id = $this->id;
                 
-        return  $style.$script1.$script2.$content;
+        return  $style.$content;
     }
 
 }
