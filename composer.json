@@ -1,0 +1,21 @@
+{
+    "name": "brenoleite8/pivottable",
+    "description": "A PivotTable for use with Mad Builder or Adianti Framework.",
+    "type": "library",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+        "Brenoleite8\\Pivottable\\": "src/"
+        }
+    },
+    "authors": [
+        {
+        "name": "Breno Leite",
+        "email": "brenoleite8@outlook.com"
+        }
+    ],
+    "license": "MIT",
+    "minimum-stability": "stable"
+}
