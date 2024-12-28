@@ -71,8 +71,8 @@ class BLPivotTable extends TElement
                                     rows: ['color'],
                                     cols: ['shape']
                                 }
-                            );
-                        }, false, 'pt');
+                            , false, 'pt');
+                        });
                         ");
     }
 
