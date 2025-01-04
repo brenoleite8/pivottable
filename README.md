@@ -28,6 +28,10 @@ Utilize as classes ``BElement`` ou ``TElement`` para inserir a PivotTable:
     use Brenoleite8\pivottable\BLPivotTable;
 
 Exemplo: 
+
+    <?php
+    
+    use Brenoleite8\pivottable\BLPivotTable;
     
     class teste extends TPage
     {
@@ -95,4 +99,7 @@ Exemplo:
             parent::add($container);
 
         }
+
+#
 # Contribuições
+Entre em contato no email `brenoleite8@outlook.com`.
