@@ -15,6 +15,10 @@ class BLPivotTable extends TElement
     private $fieldNames = array();
     private $rows       = array(); 
     private $columns    = array();
+    private $plotly     = false;
+    private $d3         = false;
+    private $export     = false;
+    
     private $return;
 
     public function __construct()
@@ -51,6 +55,21 @@ class BLPivotTable extends TElement
         $this->fieldNames = $names;
     }
 
+    public function usePlotly()
+    {
+        $this->plotly = true;
+    }
+    
+    public function useD3()
+    {
+        $this->d3 = true;
+    }
+
+    public function useExport()
+    {
+        $this->export = true;
+    }
+
     private function formatDataAndColumns(array $data, array $mapping)
     {
         // Atualizar os dados mapeando as chaves
@@ -84,6 +103,15 @@ class BLPivotTable extends TElement
         $jsonData    = json_encode($this->objects);
         $jsonRows    = json_encode($this->rows);
         $jsonColumns = json_encode($this->columns);
+        $renderers   = '';
+        $derivers    = '';
+        if($plotly OR $d3 OR $export) {
+            $derivers   = 'var derivers = $.pivotUtilities.derivers;';
+            $d3 = '';
+            $d3 = '';
+            $renderers  = "var renderers = $.extend(
+                            );";
+        }
 
         $script = "$(function(){
                             $('#".$this->id."').pivotUI(
