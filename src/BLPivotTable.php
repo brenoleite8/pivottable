@@ -130,7 +130,6 @@ class BLPivotTable extends TElement
         }
         $renderers_value = (!empty($renderers)) ? 'renderers: renderers,' : '' ;
         
-        new TMessage('info', $jsonData);
         $script = "$(function(){
                             ".$derivers.$renderers."
                             $('#".$this->id."').pivotUI(
@@ -142,28 +141,35 @@ class BLPivotTable extends TElement
                                 }
                             , false, \"pt\");
                         });";
-        
+
         TScript::create($script);
-        return var_dump($script);
+
+        return $script;
     }
 
 
     public function show()
     {
-        $this->create();
+        try {
+            $teste = $this->create();
+            echo($teste);
 
-        $script = new TElement('script');
-        $script->type = 'text/javascript';
-        $script->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.min.js';
-
-        $script_pt = new TElement('script');
-        $script_pt->type = 'text/javascript';
-        $script_pt->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js';
+            $script = new TElement('script');
+            $script->type = 'text/javascript';
+            $script->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.min.js';
+    
+            $script_pt = new TElement('script');
+            $script_pt->type = 'text/javascript';
+            $script_pt->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js';
+            
+            $content = new TElement('div');
+            $content->id = $this->id;
+                    
+            return  $script.$script_pt.$content;
+        } catch (\Throwable $e) {
+            return $e->getMessage();
+        } 
         
-        $content = new TElement('div');
-        $content->id = $this->id;
-                
-        return  $script.$script_pt.$content;
     }
 
 }
