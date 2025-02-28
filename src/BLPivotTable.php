@@ -108,9 +108,9 @@ class BLPivotTable extends TElement
         if($this->plotly === TRUE OR $this->d3 === TRUE OR $this->export === TRUE) {
             $derivers   = 'var derivers = $.pivotUtilities.derivers;';
             
-            $plotly = ($this->plotly) ? '$.pivotUtilities.plotly_renderers,' : '';
-            $d3     = ($this->d3)     ? '$.pivotUtilities.d3_renderers,' : '';
-            $export = ($this->export) ? '$.pivotUtilities.export_renderers,' : '';
+            $plotly = ($this->plotly === TRUE) ? '$.pivotUtilities.plotly_renderers,' : '';
+            $d3     = ($this->d3 === TRUE)     ? '$.pivotUtilities.d3_renderers,'     : '';
+            $export = ($this->export === TRUE) ? '$.pivotUtilities.export_renderers,' : '';
             
             $renderers  = 'var renderers = $.extend(
                                 $.pivotUtilities.renderers,
@@ -129,6 +129,7 @@ class BLPivotTable extends TElement
                                 }
                             , false, \"pt\");
                         });";
+        var_dump($script)
         TScript::create($script);
     }
 
