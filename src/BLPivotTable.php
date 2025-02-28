@@ -143,13 +143,15 @@ class BLPivotTable extends TElement
                         });";
 
         TScript::create($script);
+
+        return $script;
     }
 
 
     public function show()
     {
-        $this->create();
-
+        $teste = $this->create();
+        echo($teste);
         $script = new TElement('script');
         $script->type = 'text/javascript';
         $script->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.min.js';
