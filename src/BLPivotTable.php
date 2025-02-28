@@ -16,7 +16,6 @@ class BLPivotTable extends TElement
     private $rows       = array(); 
     private $columns    = array();
     private $plotly     = false;
-    private $d3         = false;
     private $export     = false;
     
     private $return;
@@ -59,11 +58,6 @@ class BLPivotTable extends TElement
     {
         $this->plotly = TRUE;
     }
-    
-    public function useD3()
-    {
-        $this->d3 = TRUE;
-    }
 
     public function useExport()
     {
@@ -105,16 +99,13 @@ class BLPivotTable extends TElement
         $jsonColumns = json_encode($this->columns);
         $renderers   = '';
         $derivers    = '';
-        if($this->plotly === TRUE OR $this->d3 === TRUE OR $this->export === TRUE) {
+        if($this->plotly === TRUE OR $this->export === TRUE) {
             $derivers   = 'var derivers = $.pivotUtilities.derivers;';
             
             $renderer = [];
 
             if ($this->plotly === TRUE) {
                 $renderer[] = '$.pivotUtilities.plotly_renderers';
-            }
-            if ($this->d3 === TRUE) {
-                $renderer[] = '$.pivotUtilities.d3_renderers';
             }
             if ($this->export === TRUE) {
                 $renderer[] = '$.pivotUtilities.export_renderers';
@@ -177,13 +168,6 @@ class BLPivotTable extends TElement
             $renderers .= $script_export;
         }
 
-        if ($this->d3 === TRUE) {
-            $script_d3 = new TElement('script');
-            $script_d3->type = 'text/javascript';
-            $script_d3->src  = 'vendor/brenoleite8/pivottable/src/js/d3_renderers.min.js';
-            $renderers .= $script_d3;
-        }
-       
         $content = new TElement('div');
         $content->id = $this->id;
                 
