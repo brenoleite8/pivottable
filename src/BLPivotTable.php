@@ -159,6 +159,11 @@ class BLPivotTable extends TElement
             $script_plotly->type = 'text/javascript';
             $script_plotly->src  = 'vendor/brenoleite8/pivottable/src/js/plotly_renderers.min.js';
             $renderers .= $script_plotly;
+
+            $script_plotly_basic = new TElement('script');
+            $script_plotly_basic->type = 'text/javascript';
+            $script_plotly_basic->src  = 'vendor/brenoleite8/pivottable/src/js/plotly-basic-latest.min.js';
+            $renderers .= $script_plotly_basic;
         }
 
         if ($this->export === TRUE) {
