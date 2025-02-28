@@ -143,15 +143,13 @@ class BLPivotTable extends TElement
                         });";
 
         TScript::create($script);
-
-        return $script;
     }
 
 
     public function show()
     {
-        $teste = $this->create();
-        echo($teste);
+        $this->create();
+
         $script = new TElement('script');
         $script->type = 'text/javascript';
         $script->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.min.js';
@@ -159,11 +157,34 @@ class BLPivotTable extends TElement
         $script_pt = new TElement('script');
         $script_pt->type = 'text/javascript';
         $script_pt->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js';
-        
+
+        $renderers = '';
+
+        if ($this->plotly === TRUE) {
+            $script_plotly = new TElement('script');
+            $script_plotly->type = 'text/javascript';
+            $script_plotly->src  = 'vendor/brenoleite8/pivottable/src/js/plotly_renderers.min.js';
+            $renderers .= $script_plotly;
+        }
+
+        if ($this->export === TRUE) {
+            $script_export = new TElement('script');
+            $script_export->type = 'text/javascript';
+            $script_export->src  = 'vendor/brenoleite8/pivottable/src/js/export_renderers.min.js';
+            $renderers .= $script_export;
+        }
+
+        if ($this->d3 === TRUE) {
+            $script_d3 = new TElement('script');
+            $script_d3->type = 'text/javascript';
+            $script_d3->src  = 'vendor/brenoleite8/pivottable/src/js/d3_renderers.min.js';
+            $renderers .= $script_d3;
+        }
+       
         $content = new TElement('div');
         $content->id = $this->id;
                 
-        return  $script.$script_pt.$content;       
+        return  $script.$script_pt.$renderers.$content;
     }
 
 }
