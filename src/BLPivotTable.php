@@ -57,17 +57,17 @@ class BLPivotTable extends TElement
 
     public function usePlotly()
     {
-        $this->plotly = true;
+        $this->plotly = TRUE;
     }
     
     public function useD3()
     {
-        $this->d3 = true;
+        $this->d3 = TRUE;
     }
 
     public function useExport()
     {
-        $this->export = true;
+        $this->export = TRUE;
     }
 
     private function formatDataAndColumns(array $data, array $mapping)
@@ -105,7 +105,7 @@ class BLPivotTable extends TElement
         $jsonColumns = json_encode($this->columns);
         $renderers   = '';
         $derivers    = '';
-        if($this->plotly OR $this->d3 OR $this->export) {
+        if($this->plotly === TRUE OR $this->d3 === TRUE OR $this->export === TRUE) {
             $derivers   = 'var derivers = $.pivotUtilities.derivers;';
             
             $plotly = ($this->plotly) ? '$.pivotUtilities.plotly_renderers,' : '';
