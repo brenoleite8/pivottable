@@ -108,20 +108,35 @@ class BLPivotTable extends TElement
         if($this->plotly === TRUE OR $this->d3 === TRUE OR $this->export === TRUE) {
             $derivers   = 'var derivers = $.pivotUtilities.derivers;';
             
+            $renderer = [];
+
+            if ($this->plotly === TRUE) {
+                $renderer[] = '$.pivotUtilities.plotly_renderers';
+            }
+            if ($this->d3 === TRUE) {
+                $renderer[] = '$.pivotUtilities.d3_renderers';
+            }
+            if ($this->export === TRUE) {
+                $renderer[] = '$.pivotUtilities.export_renderers';
+            }
+
+            // Junta os valores com vírgula
+            $renderer = implode(',', $renderer);
+
             $plotly = ($this->plotly === TRUE) ? '$.pivotUtilities.plotly_renderers,' : '';
             $d3     = ($this->d3 === TRUE)     ? '$.pivotUtilities.d3_renderers,'     : '';
             $export = ($this->export === TRUE) ? '$.pivotUtilities.export_renderers,' : '';
             
             $renderers  = 'var renderers = $.extend(
                                 $.pivotUtilities.renderers,
-                                '.$plotly.$d3.$export.'
+                                '.$renderer.'
                             );';
         }
-        $renders_value = (!empty($renderers)) ? 'renderers: renderers,' : '';
+        $renderers_value = (!empty($renderers)) ? 'renderers: renderers,' : '' ;
         $script = "$(function(){
                             ".$derivers.$renderers."
                             $('#".$this->id."').pivotUI(
-                                ".$renders_value."
+                                ".$renderers_value."
                                 ".$jsonData.",
                                 {
                                     rows: ".$jsonRows.",
@@ -129,7 +144,6 @@ class BLPivotTable extends TElement
                                 }
                             , false, \"pt\");
                         });";
-        var_dump($script)
         TScript::create($script);
     }
 
