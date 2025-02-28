@@ -105,16 +105,23 @@ class BLPivotTable extends TElement
         $jsonColumns = json_encode($this->columns);
         $renderers   = '';
         $derivers    = '';
-        if($plotly OR $d3 OR $export) {
+        if($this->plotly OR $this->d3 OR $this->export) {
             $derivers   = 'var derivers = $.pivotUtilities.derivers;';
-            $d3 = '';
-            $d3 = '';
-            $renderers  = "var renderers = $.extend(
-                            );";
+            
+            $plotly = ($this->plotly) ? '$.pivotUtilities.plotly_renderers,' : '';
+            $d3     = ($this->d3)     ? '$.pivotUtilities.d3_renderers,' : '';
+            $export = ($this->export) ? '$.pivotUtilities.export_renderers,' : '';
+            
+            $renderers  = 'var renderers = $.extend(
+                                $.pivotUtilities.renderers,
+                                '.$plotly.$d3.$export.'
+                            );';
         }
-
+        $renders_value = (!empty($renderers)) ? 'renderers: renderers,' : '';
         $script = "$(function(){
+                            ".$derivers.$renderers."
                             $('#".$this->id."').pivotUI(
+                                ".$renders_value."
                                 ".$jsonData.",
                                 {
                                     rows: ".$jsonRows.",
