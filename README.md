@@ -25,8 +25,6 @@ No início da classe que irá utilizar a ferramenta, adicione :
 
 Utilize as classes ``BElement`` ou ``TElement`` para inserir a PivotTable:
 
-    use Brenoleite8\pivottable\BLPivotTable;
-
 Exemplo: 
 
     <?php
