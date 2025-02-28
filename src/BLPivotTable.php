@@ -122,10 +122,6 @@ class BLPivotTable extends TElement
 
             // Junta os valores com vírgula
             $renderer = implode(',', $renderer);
-
-            $plotly = ($this->plotly === TRUE) ? '$.pivotUtilities.plotly_renderers,' : '';
-            $d3     = ($this->d3 === TRUE)     ? '$.pivotUtilities.d3_renderers,'     : '';
-            $export = ($this->export === TRUE) ? '$.pivotUtilities.export_renderers,' : '';
             
             $renderers  = 'var renderers = $.extend(
                                 $.pivotUtilities.renderers,
@@ -133,6 +129,8 @@ class BLPivotTable extends TElement
                             );';
         }
         $renderers_value = (!empty($renderers)) ? 'renderers: renderers,' : '' ;
+        
+        new TMessage('info', $jsonData);
         $script = "$(function(){
                             ".$derivers.$renderers."
                             $('#".$this->id."').pivotUI(
@@ -144,7 +142,9 @@ class BLPivotTable extends TElement
                                 }
                             , false, \"pt\");
                         });";
+        
         TScript::create($script);
+        return var_dump($script);
     }
 
 
@@ -159,37 +159,10 @@ class BLPivotTable extends TElement
         $script_pt = new TElement('script');
         $script_pt->type = 'text/javascript';
         $script_pt->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js';
-
-        /*
-        $script_plotly = new TElement('script');
-        $script_plotly->type = 'text/javascript';
-        $script_plotly->src  = 'vendor/brenoleite8/pivottable/src/js/plotly_renderers.min.js';
-
-        $script_spec = new TElement('script');
-        $script_spec->type = 'text/javascript';
-        $script_spec->src  = 'vendor/brenoleite8/pivottable/src/js/pivot_spec.min.js';
-        
-        $script_gchart = new TElement('script');
-        $script_gchart->type = 'text/javascript';
-        $script_gchart->src  = 'vendor/brenoleite8/pivottable/src/js/gchart_renderers.min.js';
-
-        $script_export = new TElement('script');
-        $script_export->type = 'text/javascript';
-        $script_export->src  = 'vendor/brenoleite8/pivottable/src/js/export_renderers.min.js';
-
-        $script_d3 = new TElement('script');
-        $script_d3->type = 'text/javascript';
-        $script_d3->src  = 'vendor/brenoleite8/pivottable/src/js/d3_renderers.min.js';
-
-        $script_c3 = new TElement('script');
-        $script_c3->type = 'text/javascript';
-        $script_c3->src  = 'vendor/brenoleite8/pivottable/src/js/c3_renderers.min.js';
-       */
         
         $content = new TElement('div');
         $content->id = $this->id;
                 
-        //return  $script.$script_pt.$script_plotly.$script_spec.$script_gchart.$script_export.$script_d3.$script_c3.$content;
         return  $script.$script_pt.$content;
     }
 
