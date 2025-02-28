@@ -132,10 +132,10 @@ class BLPivotTable extends TElement
         
         $script = "$(function(){
                             ".$derivers.$renderers."
-                            $('#".$this->id."').pivotUI(
-                                ".$renderers_value."
+                            $('#".$this->id."').pivotUI(                               
                                 ".$jsonData.",
                                 {
+                                    ".$renderers_value."
                                     rows: ".$jsonRows.",
                                     cols: ".$jsonColumns."
                                 }
@@ -143,33 +143,25 @@ class BLPivotTable extends TElement
                         });";
 
         TScript::create($script);
-
-        return $script;
     }
 
 
     public function show()
     {
-        try {
-            $teste = $this->create();
-            echo($teste);
+        $this->create();
 
-            $script = new TElement('script');
-            $script->type = 'text/javascript';
-            $script->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.min.js';
-    
-            $script_pt = new TElement('script');
-            $script_pt->type = 'text/javascript';
-            $script_pt->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js';
-            
-            $content = new TElement('div');
-            $content->id = $this->id;
-                    
-            return  $script.$script_pt.$content;
-        } catch (\Throwable $e) {
-            return $e->getMessage();
-        } 
+        $script = new TElement('script');
+        $script->type = 'text/javascript';
+        $script->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.min.js';
+
+        $script_pt = new TElement('script');
+        $script_pt->type = 'text/javascript';
+        $script_pt->src  = 'vendor/brenoleite8/pivottable/src/js/pivot.pt.min.js';
         
+        $content = new TElement('div');
+        $content->id = $this->id;
+                
+        return  $script.$script_pt.$content;       
     }
 
 }
