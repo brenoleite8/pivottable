@@ -1,9 +1,9 @@
 # PivotTable
-Adaptação da ferramenta PivotTable.js (https://pivottable.js.org/) para utilização no Adianti Framework e Mad Builder.
+Adaptação da ferramenta PivotTable.js (https://pivottable.js.org/) para utilização no Adianti Framework e MadBuilder.
 #### Obs: Está sendo utilizada a versão 2.23.0 do componente PivotTable.js.
 
 # Instalação
-### Mad Buider
+### MadBuider
 Na aba "Composer packages" adicione:
 
     brenoleite8/pivottable:dev-master
