@@ -3,7 +3,7 @@ Adaptação da ferramenta PivotTable.js (https://pivottable.js.org/) para utiliz
 #### Obs: Está sendo utilizada a versão 2.23.0 do componente PivotTable.js.
 
 # Instalação
-### MadBuider
+### MadBuilder
 Na aba "Composer packages" adicione:
 
     brenoleite8/pivottable:dev-master
