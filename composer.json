@@ -16,7 +16,7 @@
         "email": "brenoleite8@outlook.com"
         }
     ],
-    "license": "MIT"
+    "license": "MIT",
     "minimum-stability": "dev",
     "prefer-stable": true
 }
