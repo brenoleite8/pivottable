@@ -11,12 +11,14 @@ class BLPivotTable extends TElement
 {
     protected $id;
     
-    private $objects    = array();
-    private $fieldNames = array();
-    private $rows       = array(); 
-    private $columns    = array();
     private $return;
-
+    private $aggregator;
+    private $valAggregator = array();
+    private $objects       = array();
+    private $fieldNames    = array();
+    private $rows          = array(); 
+    private $columns       = array();
+    
     public function __construct()
     {
         parent::__construct('div');
@@ -61,6 +63,16 @@ class BLPivotTable extends TElement
         $this->fieldNames = $names;
     }
 
+    public function setAggregator(string $aggregator)
+    {
+        $this->aggregator = $aggregator;
+    }
+
+    public function setValAggregator(array $valAggregator)
+    {
+        $this->valAggregator = $valAggregator;
+    }
+
     private function formatDataAndColumns(array $data, array $mapping)
     {
         // Atualizar os dados mapeando as chaves
@@ -95,12 +107,17 @@ class BLPivotTable extends TElement
         $jsonRows    = json_encode($this->rows);
         $jsonColumns = json_encode($this->columns);
 
+        $aggregator = (!empty($this->aggregator)) ? ', aggregatorName: "'.$this->aggregator.'"' : '';
+        $valAggregator = (!empty($this->aggregator)) ? ', vals: '. json_encode($this->valAggregator) : '';
+       
         $script = "$(function(){
                             $('#".$this->id."').pivotUI(
                                 ".$jsonData.",
                                 {
                                     rows: ".$jsonRows.",
                                     cols: ".$jsonColumns."
+                                    ".$valAggregator."
+                                    ".$aggregator."
                                 }
                             , false, \"pt\");
                         });";
