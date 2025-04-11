@@ -23,9 +23,7 @@ No início da classe que irá utilizar a ferramenta, adicione :
 
     use Brenoleite8\pivottable\BLPivotTable;
 
-Utilize as classes ``BElement`` ou ``TElement`` para inserir a PivotTable:
-
-    use Brenoleite8\pivottable\BLPivotTable;
+Utilize as classes ``BElement`` ou ``TElement`` para inserir a PivotTable.
 
 Exemplo: 
 
