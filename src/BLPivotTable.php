@@ -115,7 +115,7 @@ class BLPivotTable extends TElement
 
         $aggregator    = (!empty($this->aggregator)) ? ', aggregatorName: "'.$this->aggregator.'"' : '';
         $valAggregator = (!empty($this->aggregator)) ? ', vals: '. json_encode($this->valAggregator) : '';
-        $typeTable     = (!empty($this->typeTable))  ? ', rendererName: '. $this->typeTable : '';
+        $typeTable     = (!empty($this->typeTable))  ? ', rendererName: "'. $this->typeTable.'"' : '';
        
         $script = "$(function(){
                             $('#".$this->id."').pivotUI(
