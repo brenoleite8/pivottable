@@ -13,6 +13,7 @@ class BLPivotTable extends TElement
     
     private $return;
     private $aggregator;
+    private $typeTable;
     private $valAggregator = array();
     private $objects       = array();
     private $fieldNames    = array();
@@ -73,6 +74,11 @@ class BLPivotTable extends TElement
         $this->valAggregator = $valAggregator;
     }
 
+    public function setTypeTable(string $typeTable)
+    {
+        $this->typeTable = $typeTable;
+    }
+
     private function formatDataAndColumns(array $data, array $mapping)
     {
         // Atualizar os dados mapeando as chaves
@@ -107,8 +113,9 @@ class BLPivotTable extends TElement
         $jsonRows    = json_encode($this->rows);
         $jsonColumns = json_encode($this->columns);
 
-        $aggregator = (!empty($this->aggregator)) ? ', aggregatorName: "'.$this->aggregator.'"' : '';
+        $aggregator    = (!empty($this->aggregator)) ? ', aggregatorName: "'.$this->aggregator.'"' : '';
         $valAggregator = (!empty($this->aggregator)) ? ', vals: '. json_encode($this->valAggregator) : '';
+        $typeTable     = (!empty($this->typeTable))  ? ', rendererName: '. $this->typeTable : '';
        
         $script = "$(function(){
                             $('#".$this->id."').pivotUI(
@@ -118,6 +125,7 @@ class BLPivotTable extends TElement
                                     cols: ".$jsonColumns."
                                     ".$valAggregator."
                                     ".$aggregator."
+                                    ".$typeTable."
                                 }
                             , false, \"pt\");
                         });";
