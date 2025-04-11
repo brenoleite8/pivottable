@@ -3,7 +3,8 @@
     "description": "A PivotTable for use with Mad Builder or Adianti Framework.",
     "type": "library",
     "require": {
-        "php": ">=7.4"
+        "php": ">=7.4",
+        "brenoleite8/pivottable": "dev-master"
     },
     "autoload": {
         "psr-4": {
