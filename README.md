@@ -99,7 +99,7 @@ Exemplo:
         }
 
 # Outros recursos
-O PivotTable.js oficial possui inúmeros recursos. Inicialmente, foi desenvolvido apenas com o básico, mas outras ferramentas podem ser adicionadas futuramente.
+O PivotTable.js oficial possui inúmeros recursos. Inicialmente, foi desenvolvido apenas com os básicos, mas os outros podem ser adicionadas futuramente.
 
 # Contribuições
 Entre em contato no email `brenoleite8@outlook.com`.
